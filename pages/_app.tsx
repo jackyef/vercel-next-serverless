@@ -5,11 +5,10 @@ import {
   CSSReset,
   theme,
   ColorModeProvider,
-  useColorMode,
-  Flex,
 } from '@chakra-ui/core';
 import { Global } from '@emotion/core';
 import mainStyles from '../styles/main';
+import { AuthProvider } from '../context/Auth';
 
 class MyApp extends App {
   render() {
@@ -20,7 +19,9 @@ class MyApp extends App {
         <ColorModeProvider>
           <CSSReset />
           <Global styles={mainStyles} />
-          <Component {...pageProps} />
+          <AuthProvider>
+            <Component {...pageProps} />
+          </AuthProvider>
         </ColorModeProvider>
       </ThemeProvider>
     );

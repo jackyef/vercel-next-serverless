@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Router from 'next/Router';
+import Router from 'next/router';
 import { Flex, Box, useTheme, useColorMode } from '@chakra-ui/core';
 import { MdArrowBack } from 'react-icons/md';
 import { FaSun, FaMoon } from 'react-icons/fa';

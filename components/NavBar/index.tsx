@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Router from 'next/Router';
+import Router from 'next/router';
 import { Flex, Text, Box, useTheme } from '@chakra-ui/core';
-import { MdHome, MdAccountCircle, MdRestaurant } from 'react-icons/md';
+import { MdHome, MdAccountCircle } from 'react-icons/md';
 import { canUseDOM } from '../../utils/constants';
 
 export const NavBar: React.FC = () => {

@@ -6,13 +6,13 @@ import { NavBar } from '../components/NavBar';
 const Index: React.FC = () => {
   return (
     <Layout title="Home">
-        <Box maxWidth={480} width="100%" margin="0 auto">
-          <Flex flexDirection="column" flex="1" padding={['1rem']}>
-            Hello world!
-            <Divider />
-          </Flex>
-          <NavBar />
-        </Box>
+      <Box maxWidth={480} width="100%" margin="0 auto">
+        <Flex flexDirection="column" flex="1" padding={['1rem']}>
+          Hello world!
+          <Divider />
+        </Flex>
+        <NavBar />
+      </Box>
     </Layout>
   );
 };
