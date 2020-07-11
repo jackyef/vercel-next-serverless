@@ -24,7 +24,7 @@ const AccountPage: React.FC = () => {
     <PageWrapper title="My Account" header bottomNavBar>
       <PrivateRoute fallback={<FullPageLoader message="Authenticating..." />}>
         <Stack spacing={4}>
-          <Heading as="h1" fontSize="2xl">
+          <Heading as="h1">
             Your account
           </Heading>
           <Stack spacing={2}>

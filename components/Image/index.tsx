@@ -10,7 +10,6 @@ type Props = ImageProps & {
  */
 export const Image: React.FC<Props> = ({ loading, ...props }) => {
   return (
-    // @ts-expect-error
     <_Image {...props} loading={loading} />
   );
 }

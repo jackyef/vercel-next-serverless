@@ -24,7 +24,7 @@ handler.get(async (req: NowRequest, res: NowResponse) => {
     const userCollection = client.db('dbname').collection('users');
     const user = await userCollection.findOne({ email: sessionUser.email });
 
-    res.json(user.favoriteUniversities);
+    res.status(200).json(user.favoriteUniversities);
   } catch (err) {
     console.error(err);
     console.error(err.stack);

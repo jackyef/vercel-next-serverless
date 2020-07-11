@@ -9,7 +9,7 @@ const database = async (req, res, next) => {
   if (!client.isConnected()) await client.connect();
   req.mongoClient = client;
 
-  return next();
+  await next();
 }
 
 const middleware = nextConnect();

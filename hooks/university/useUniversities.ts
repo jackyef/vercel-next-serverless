@@ -26,7 +26,7 @@ export const useUniversities = ({ keyword = '', favorite = false }) => {
   // only show 100 university at most, avoid perf issue for now
   // the API we are using does not support pagination
   const universities = React.useMemo(() => {
-    return (data ? data.slice(0, 100) : []).map((d: any) => ({
+    return (Array.isArray(data) ? data.slice(0, 100) : []).map((d: any) => ({
       name: d.name,
       country: d.country,
       website: d.website || d.web_pages?.[0],

@@ -60,7 +60,7 @@ handler.post(async (req: NowRequest, res: NowResponse) => {
       );
     }
 
-    res.json({ status: 'ok', user });
+    res.status(200).json({ status: 'ok', user });
   } catch (err) {
     console.error(err);
     console.error(err.stack);

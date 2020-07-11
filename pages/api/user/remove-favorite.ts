@@ -49,7 +49,7 @@ handler.post(async (req: NowRequest, res: NowResponse) => {
       },
     );
 
-    res.json({ status: 'ok' });
+    res.status(200).json({ status: 'ok' });
   } catch (err) {
     console.error(err);
     console.error(err.stack);
