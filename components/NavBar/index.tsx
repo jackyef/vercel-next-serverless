@@ -1,11 +1,14 @@
 import * as React from 'react';
 import Router from 'next/router';
 import { Flex, Text, Box, useTheme } from '@chakra-ui/core';
-import { MdHome, MdAccountCircle } from 'react-icons/md';
+import { MdAccountCircle, MdSearch } from 'react-icons/md';
+import { AiFillHeart, AiOutlineLogin } from 'react-icons/ai';
 import { canUseDOM } from '../../utils/constants';
+import { AuthContext } from '../../context/Auth';
 
 export const NavBar: React.FC = () => {
   const theme = useTheme();
+  const { isAuthenticated, signin } = React.useContext(AuthContext);
   const currentPath = canUseDOM ? Router.pathname : '';
 
   return (
@@ -14,7 +17,7 @@ export const NavBar: React.FC = () => {
       <Flex
         position="fixed"
         width="100%"
-        maxWidth="480px"
+        maxWidth={[480, 960]}
         flex={1}
         bottom={0}
         alignItems="center"
@@ -33,21 +36,56 @@ export const NavBar: React.FC = () => {
             currentPath === '/' ? theme.colors.blackAlpha[50] : 'inherit'
           }
         >
-          <MdHome size={24} />
-          <Text fontSize="xs">Home</Text>
+          <MdSearch size={24} />
+          <Text fontSize="xs">Search</Text>
         </Flex>
-        <Flex
-        
-        paddingY={theme.space[1]}
-          flex={1}
-          flexDirection="column"
-          alignItems="center"
-          onClick={() => Router.push('/account')}
-          backgroundColor={currentPath === '/account' ? theme.colors.blackAlpha[50] : 'inherit'}
-        >
-          <MdAccountCircle size={24} />
-          <Text fontSize="xs">Account</Text>
-        </Flex>
+        {isAuthenticated ? (
+          <Flex
+            paddingY={theme.space[1]}
+            flex={1}
+            flexDirection="column"
+            alignItems="center"
+            onClick={() => Router.push('/favorites')}
+            backgroundColor={
+              currentPath === '/favorites'
+                ? theme.colors.blackAlpha[50]
+                : 'inherit'
+            }
+          >
+            <AiFillHeart size={24} />
+            <Text fontSize="xs">Favorites</Text>
+          </Flex>
+        ) : null}
+
+        {isAuthenticated ? (
+          <Flex
+            paddingY={theme.space[1]}
+            flex={1}
+            flexDirection="column"
+            alignItems="center"
+            onClick={() => Router.push('/account')}
+            backgroundColor={
+              currentPath === '/account'
+                ? theme.colors.blackAlpha[50]
+                : 'inherit'
+            }
+          >
+            <MdAccountCircle size={24} />
+            <Text fontSize="xs">Account</Text>
+          </Flex>
+        ) : (
+          <Flex
+            paddingY={theme.space[1]}
+            flex={1}
+            flexDirection="column"
+            alignItems="center"
+            onClick={() => signin('google', { callbackUrl: currentPath })}
+            backgroundColor="inherit"
+          >
+            <AiOutlineLogin size={24} />
+            <Text fontSize="xs">Sign in</Text>
+          </Flex>
+        )}
       </Flex>
     </>
   );

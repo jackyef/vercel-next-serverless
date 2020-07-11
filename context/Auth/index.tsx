@@ -30,6 +30,8 @@ export const AuthContext = React.createContext<AuthState>(initialState);
 export const AuthProvider: React.FC = ({ children }) => {
   const [session, loading] = useSession();
 
+  console.log({ session, loading })
+
   const authAPIs: AuthState = {
     isAuthenticated: Boolean(session),
     user: session?.user || initialState.user,

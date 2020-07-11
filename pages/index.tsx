@@ -1,18 +1,18 @@
 import React from 'react';
-import { Flex, Divider, Box } from '@chakra-ui/core';
+import { Flex, Divider } from '@chakra-ui/core';
 import Layout from '../components/Layout';
-import { NavBar } from '../components/NavBar';
+import { UniversityList } from '../components/University/List';
+import { PageWrapper } from '../components/Wrapper/Page';
 
 const Index: React.FC = () => {
   return (
     <Layout title="Home">
-      <Box maxWidth={480} width="100%" margin="0 auto">
+      <PageWrapper header={false} bottomNavBar>
         <Flex flexDirection="column" flex="1" padding={['1rem']}>
-          Hello world!
+          <UniversityList keyword="middle" />
           <Divider />
         </Flex>
-        <NavBar />
-      </Box>
+      </PageWrapper>
     </Layout>
   );
 };

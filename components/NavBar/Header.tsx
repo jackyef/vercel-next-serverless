@@ -12,13 +12,17 @@ function ColorModeExample() {
   return (
     <Flex fontSize="2xl">
       <Button onClick={toggleColorMode} variant="ghost">
-        {colorMode === 'light' ? <FaSun /> : <FaMoon /> }
+        {colorMode === 'light' ? <FaSun /> : <FaMoon />}
       </Button>
     </Flex>
   );
 }
 
-export const Header: React.FC = () => {
+interface Props {
+  backArrow?: boolean;
+}
+
+export const Header: React.FC<Props> = ({ backArrow = false }) => {
   const theme = useTheme();
 
   return (
@@ -29,7 +33,7 @@ export const Header: React.FC = () => {
         paddingTop={theme.space[1]}
         paddingX={theme.space[4]}
         width="100%"
-        maxWidth="480px"
+        maxWidth={[480, 960]}
         fontSize="2xl"
         flex={1}
         top={0}
@@ -38,7 +42,7 @@ export const Header: React.FC = () => {
         boxShadow="var(--shadow-under)"
         backgroundColor="var(--bg-elevated)"
       >
-        <MdArrowBack onClick={() => Router.back()} />
+        {backArrow ? <MdArrowBack onClick={() => Router.back()} /> : <div />}
         <ColorModeExample />
       </Flex>
       <Box height="44px" />

@@ -8,9 +8,30 @@ const options = {
 
   // https://next-auth.js.org/configuration/providers
   providers: [
-    Providers.GitHub({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
+    // Providers.GitHub({
+    //   clientId: process.env.GITHUB_ID,
+    //   clientSecret: process.env.GITHUB_SECRET,
+    //   profile: (profile) => {
+    //     console.log({ profile })
+    //     return {
+    //       id: profile.id,
+    //       name: profile.name,
+    //       email: profile.email,
+    //       image: profile.avatar_url
+    //     }
+    //   },
+    // }),
+    Providers.Google({
+      clientId: process.env.GOOGLE_OAUTH_ID,
+      clientSecret: process.env.GOOGLE_OAUTH_SECRET,
+      profile: (profile) => {
+        return {
+          id: profile.id,
+          name: profile.name,
+          email: profile.email,
+          image: profile.picture,
+        }
+      },
     }),
   ],
   // Database optional. MySQL, Maria DB, Postgres and MongoDB are supported.
