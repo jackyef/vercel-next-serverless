@@ -28,7 +28,7 @@ export const Header: React.FC<Props> = ({ backArrow = false }) => {
   return (
     <>
       <Flex
-        height="44px"
+        height="56px"
         position="fixed"
         paddingTop={theme.space[1]}
         paddingX={theme.space[4]}
@@ -43,11 +43,12 @@ export const Header: React.FC<Props> = ({ backArrow = false }) => {
         backgroundColor="var(--bg-elevated)"
       >
         <Box>
+          <strong>UniversitySearch</strong>
           {backArrow ? <MdArrowBack onClick={() => Router.back()} /> : null}
         </Box>
         <ColorModeExample />
       </Flex>
-      <Box height="44px" />
+      <Box height="56px" />
     </>
   );
 };

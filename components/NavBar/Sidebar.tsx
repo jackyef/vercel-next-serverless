@@ -10,16 +10,19 @@ export const SideNavBar: React.FC = () => {
   const theme = useTheme();
   const { colorMode } = useColorMode();
   const { isAuthenticated, signin } = React.useContext(AuthContext);
-  const currentPath = canUseDOM ? Router.pathname : '';
+  const currentPath = canUseDOM ? Router.pathname : '/';
   const usedAlpha = colorMode === 'light' ? 'blackAlpha' : 'whiteAlpha';
 
   return (
     <>
       <Flex
         width="100%"
+        height="100%"
         flex={1}
         flexDirection="column"
         paddingY="2.5rem"
+        borderRight="1px solid"
+        borderColor={theme.colors[usedAlpha][200]}
       >
         <Stack spacing={4}>
           <Flex
@@ -29,7 +32,7 @@ export const SideNavBar: React.FC = () => {
             alignItems="center"
             onClick={() => Router.push('/')}
             backgroundColor={
-              currentPath === '/' ? theme.colors[usedAlpha][50] : 'inherit'
+              currentPath === '/' ? theme.colors[usedAlpha][100] : 'inherit'
             }
           >
             <MdSearch size={32} />
@@ -44,7 +47,7 @@ export const SideNavBar: React.FC = () => {
               onClick={() => Router.push('/favorites')}
               backgroundColor={
                 currentPath === '/favorites'
-                  ? theme.colors[usedAlpha][50]
+                  ? theme.colors[usedAlpha][100]
                   : 'inherit'
               }
             >
@@ -62,7 +65,7 @@ export const SideNavBar: React.FC = () => {
               onClick={() => Router.push('/account')}
               backgroundColor={
                 currentPath === '/account'
-                  ? theme.colors[usedAlpha][50]
+                  ? theme.colors[usedAlpha][100]
                   : 'inherit'
               }
             >

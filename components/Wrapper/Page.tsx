@@ -50,6 +50,7 @@ export const PageWrapper: React.FC<WrapperProps> = ({
                 flexDirection="column"
                 flex="1"
                 padding="2.5rem 1rem"
+                height="92vh"
                 maxH="92vh"
                 overflowY="scroll"
               >

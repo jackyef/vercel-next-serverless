@@ -3,7 +3,7 @@ import qs from 'querystring';
 import { useQuery } from 'react-query';
 import { favoriteUniversitiesCacheKey } from './useRemoveFavoriteUniversity';
 
-const searchEndpoint = `http://universities.hipolabs.com/search`;
+const searchEndpoint = `/api/proxy/hipolabs/search`; // need to use proxy because they don't support HTTPS
 const favoriteEndpoint = `/api/user/favorite-universities`;
 
 export const useUniversities = ({ keyword = '', favorite = false }) => {
