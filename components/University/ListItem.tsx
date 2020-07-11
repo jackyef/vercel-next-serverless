@@ -1,17 +1,22 @@
 import * as React from 'react';
 import { Flex, useTheme, Stack, Heading, Text } from '@chakra-ui/core';
 import { FaGlobeAsia, FaGlobe } from 'react-icons/fa';
+import { MdClose, MdAdd } from 'react-icons/md';
 
 interface Props {
   name: string;
   country: string;
   website: string;
+  onRemove?: () => any;
+  onAdd?: () => any;
 }
 
 export const UniversityListItem: React.FC<Props> = ({
   name,
   country,
   website,
+  onRemove,
+  onAdd,
 }) => {
   const theme = useTheme();
 
@@ -26,9 +31,13 @@ export const UniversityListItem: React.FC<Props> = ({
       marginY={theme.space[1]}
     >
       <Stack spacing={3} padding={theme.space[4]}>
-        <Heading as="h2" fontSize="xl">
-          {name}
-        </Heading>
+        <Flex justifyContent="space-between">
+          <Heading as="h2" fontSize="xl">
+            {name}
+          </Heading>
+          {onRemove ? <MdClose size={24} cursor="pointer" onClick={onRemove} /> : null}
+          {onAdd ? <MdAdd size={24} cursor="pointer" onClick={onAdd} /> : null}
+        </Flex>
         <Stack spacing={2}>
           <Flex alignItems="center" as="p" fontSize="sm">
             <FaGlobeAsia fill="var(--button-bg-success)" size="1.2rem" />

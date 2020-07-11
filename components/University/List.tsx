@@ -5,16 +5,19 @@ import FullPageLoader from '../Spinner/FullPage';
 import { EmptyState } from '../State/Empty';
 import { AutoResponsiveGridContainer } from './List.styles';
 import { UniversityListItem } from './ListItem';
+import { useRemoveFavoriteUniversity } from '../../hooks/university/useRemoveFavoriteUniversity';
+import { useAddFavoriteUniversity } from '../../hooks/university/useAddFavoriteUniversity';
 
 interface Props {
   keyword?: string;
+  favorite?: boolean;
 }
 
-export const UniversityList: React.FC<Props> = ({ keyword = '' }) => {
-  const { isLoading, error, data } = useUniversities({ keyword });
-
-  console.log({ isLoading, error, data });
-
+export const UniversityList: React.FC<Props> = ({ keyword = '', favorite = false }) => {
+  const { isLoading, error, data } = useUniversities({ keyword, favorite });
+  const removeFavoriteUniversityIndex = useRemoveFavoriteUniversity();
+  const addFavoriteUniversity = useAddFavoriteUniversity();
+ 
   if (error) {
     if (error instanceof Error) {
       console.error(`error`, error.toString());
@@ -30,11 +33,7 @@ export const UniversityList: React.FC<Props> = ({ keyword = '' }) => {
     return <FullPageLoader message="Loading universities..." />;
   }
 
-  // only show 100 university at most, avoid perf issue for now
-  // the API we are using does not support pagination
-  const universities = data ? data.slice(0, 100) : []; 
-
-  if (universities.length < 1) {
+  if (data.length < 1) {
     return (
       <>
         <EmptyState
@@ -50,12 +49,14 @@ export const UniversityList: React.FC<Props> = ({ keyword = '' }) => {
 
   return (
     <AutoResponsiveGridContainer>
-      {universities.map((u: any, i: number) => (
+      {data.map((u: any, i: number) => (
         <UniversityListItem
           key={`${u.name}-${i}`}
           name={u.name}
           country={u.country}
-          website={u.web_pages[0]}
+          website={u.website}
+          onRemove={favorite ? () => removeFavoriteUniversityIndex(i) : undefined}
+          onAdd={!favorite ? () => addFavoriteUniversity(u) : undefined}
         />
       ))}
     </AutoResponsiveGridContainer>
