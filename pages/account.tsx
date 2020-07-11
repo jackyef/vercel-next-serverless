@@ -15,10 +15,12 @@ import { PrivateRoute } from '../components/Route/Private';
 import FullPageLoader from '../components/Spinner/FullPage';
 import { PageWrapper } from '../components/Wrapper/Page';
 import { AuthContext } from '../context/Auth';
+import { SubscriptionContext } from '../context/NewsletterSubscription';
 
 const AccountPage: React.FC = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { user, signout } = React.useContext(AuthContext);
+  const { subscribed, askToSubscribe } = React.useContext(SubscriptionContext);
 
   return (
     <PageWrapper title="My Account" header bottomNavBar>
@@ -58,6 +60,15 @@ const AccountPage: React.FC = () => {
                 isChecked={colorMode === 'dark'}
                 onChange={toggleColorMode}
               />
+            </Flex>
+            <Divider />
+            <Flex
+              alignItems="center"
+              justifyContent="space-between"
+              marginY={'1rem'}
+              onClick={subscribed ? undefined : askToSubscribe}
+            >
+              <Text>{subscribed ? 'You are already subscribed to our newsletter' : 'Subscribe to our newsletter'}</Text>
             </Flex>
             <Divider />
             <Stack

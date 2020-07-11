@@ -15,17 +15,26 @@ const handler = nextConnect();
 handler.use(mongoMiddleware);
 handler.use(sessionMiddleware);
 
-handler.get(async (req: NowRequest, res: NowResponse) => {
+handler.post(async (req: NowRequest, res: NowResponse) => {
   // @ts-expect-error
   const client: MongoClient = req.mongoClient;
   // @ts-expect-error
   const sessionUser: SessionUser = req.session.user;
-  
-  try {
-    const userCollection = client.db('dbname').collection('users');
-    const user = await userCollection.findOne({ email: sessionUser.email });
 
-    res.status(200).json(user.favoriteUniversities);
+  try {
+    const subscribersCollection = client
+      .db('dbname')
+      .collection('newsletter-subscribers');
+
+    if (!sessionUser) {
+      throw new Error('Not signed in');
+    }
+
+    await subscribersCollection.insertOne({ email: sessionUser.email });
+
+    res.status(200).json({
+      status: 'ok',
+    });
   } catch (err) {
     console.error(err);
     console.error(err.stack);

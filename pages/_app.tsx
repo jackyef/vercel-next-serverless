@@ -9,6 +9,7 @@ import {
 import { Global } from '@emotion/core';
 import mainStyles from '../styles/main';
 import { AuthProvider } from '../context/Auth';
+import { NewsletterSubscriptionProvider } from '../context/NewsletterSubscription';
 
 class MyApp extends App {
   render() {
@@ -20,7 +21,9 @@ class MyApp extends App {
           <CSSReset />
           <Global styles={mainStyles} />
           <AuthProvider>
-            <Component {...pageProps} />
+            <NewsletterSubscriptionProvider>
+              <Component {...pageProps} />
+            </NewsletterSubscriptionProvider>
           </AuthProvider>
         </ColorModeProvider>
       </ThemeProvider>

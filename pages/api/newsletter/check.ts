@@ -20,12 +20,25 @@ handler.get(async (req: NowRequest, res: NowResponse) => {
   const client: MongoClient = req.mongoClient;
   // @ts-expect-error
   const sessionUser: SessionUser = req.session.user;
-  
-  try {
-    const userCollection = client.db('dbname').collection('users');
-    const user = await userCollection.findOne({ email: sessionUser.email });
 
-    res.status(200).json(user.favoriteUniversities);
+  try {
+    const subscribersCollection = client
+      .db('dbname')
+      .collection('newsletter-subscribers');
+
+    const user = await subscribersCollection.findOne({
+      email: sessionUser.email,
+    });
+
+    if (!user) {
+      res.status(200).json({
+        status: 'NOT_SUBSCRIBED',
+      });
+    } else {
+      res.status(200).json({
+        status: 'SUBSCRIBED',
+      });
+    }
   } catch (err) {
     console.error(err);
     console.error(err.stack);

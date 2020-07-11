@@ -11,9 +11,10 @@ interface SessionUser {
 }
 
 const handler = nextConnect();
-// handler.use(authMiddleware);
+
 handler.use(mongoMiddleware);
 handler.use(sessionMiddleware);
+
 handler.post(async (req: NowRequest, res: NowResponse) => {
   // @ts-expect-error
   const client: MongoClient = req.mongoClient;

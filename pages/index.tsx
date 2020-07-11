@@ -1,11 +1,12 @@
 import React from 'react';
-import { Flex, Divider, Heading, Input, Text } from '@chakra-ui/core';
-import Layout from '../components/Layout';
+import { Flex, Divider, Heading, Input } from '@chakra-ui/core';
 import { UniversityList } from '../components/University/List';
 import { PageWrapper } from '../components/Wrapper/Page';
 
+let initialKeyword = '';
+
 const Index: React.FC = () => {
-  const [keyword, setKeyword] = React.useState('');
+  const [keyword, setKeyword] = React.useState(initialKeyword);
   const keywordRef = React.useRef(null);
   const updaterTimeout = React.useRef<ReturnType<typeof setTimeout> | null>(
     null,
@@ -19,9 +20,18 @@ const Index: React.FC = () => {
     }
 
     updaterTimeout.current = setTimeout(() => {
+      initialKeyword = value; // persist on navigation change on client side
       setKeyword(value);
     }, 300); // throttle for 300ms
   };
+
+  React.useEffect(() => {
+    return () => {
+      if (updaterTimeout.current) {
+        clearTimeout(updaterTimeout.current);
+      }
+    };
+  }, []);
 
   return (
     <PageWrapper title="Search for universities" header bottomNavBar>
@@ -32,6 +42,7 @@ const Index: React.FC = () => {
           name="university-name"
           ref={keywordRef}
           placeholder="Search for universities by name..."
+          defaultValue={initialKeyword}
           onChange={updateKeyword}
         />
         {keyword ? (

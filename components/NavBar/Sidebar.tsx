@@ -10,7 +10,7 @@ export const SideNavBar: React.FC = () => {
   const theme = useTheme();
   const { colorMode } = useColorMode();
   const { isAuthenticated, signin } = React.useContext(AuthContext);
-  const currentPath = canUseDOM ? Router.pathname : '/';
+  const currentPath = canUseDOM ? Router.pathname : '';
   const usedAlpha = colorMode === 'light' ? 'blackAlpha' : 'whiteAlpha';
 
   return (
