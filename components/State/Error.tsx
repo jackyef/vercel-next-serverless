@@ -18,7 +18,7 @@ export const ErrorState: React.FC<Props> = ({
         src={ErrorStateImage}
         height="160px"
       />
-      <Text as="h3" fontSize="sm">
+      <Text as="h3" fontSize={['sm','md']}>
         {message}
       </Text>
     </Stack>

@@ -13,6 +13,8 @@ interface Props {
 export const UniversityList: React.FC<Props> = ({ keyword = '' }) => {
   const { isLoading, error, data } = useUniversities({ keyword });
 
+  console.log({ isLoading, error, data });
+
   if (error) {
     if (error instanceof Error) {
       console.error(`error`, error.toString());
@@ -28,12 +30,20 @@ export const UniversityList: React.FC<Props> = ({ keyword = '' }) => {
     return <FullPageLoader message="Loading universities..." />;
   }
 
-  const universities = data ?? [];
+  // only show 100 university at most, avoid perf issue for now
+  // the API we are using does not support pagination
+  const universities = data ? data.slice(0, 100) : []; 
 
   if (universities.length < 1) {
     return (
       <>
-        <EmptyState message="Nothing's here yet..." />
+        <EmptyState
+          message={
+            !keyword
+              ? `Nothing's here yet... Try searching for something!`
+              : `We couldn't find anything that's related with the keyword "${keyword}". Try another keyword.`
+          }
+        />
       </>
     );
   }

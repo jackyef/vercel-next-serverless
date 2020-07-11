@@ -4,7 +4,7 @@ import { useQuery } from 'react-query';
 const searchEndpoint = `http://universities.hipolabs.com/search`;
 
 export const useUniversities = ({ keyword = '' }) => {
-  return useQuery('universities', () =>
+  return useQuery(`universities-${keyword}`, () =>
     fetch(
       `${searchEndpoint}?${qs.stringify({ name: keyword })}`,
     ).then((res) => res.json()),

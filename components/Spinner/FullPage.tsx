@@ -9,7 +9,7 @@ const FullPageLoader: React.FC<Props> = ({ message = '' }) => {
   const theme = useTheme();
 
   return (
-    <Flex minH="100vh" width="100%" alignItems="center" justifyContent="center" flexDirection="column">
+    <Flex height="auto" width="100%" alignItems="center" justifyContent="center" flexDirection="column">
       <Text as="p" marginBottom={theme.space[4]}>{message}</Text>
       <Spinner />
     </Flex>

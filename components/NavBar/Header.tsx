@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Router from 'next/router';
-import { Flex, Box, useTheme, useColorMode } from '@chakra-ui/core';
+import { Flex, Box, useTheme, useColorMode, Heading } from '@chakra-ui/core';
 import { MdArrowBack } from 'react-icons/md';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { Button } from '../Button';
@@ -42,7 +42,9 @@ export const Header: React.FC<Props> = ({ backArrow = false }) => {
         boxShadow="var(--shadow-under)"
         backgroundColor="var(--bg-elevated)"
       >
-        {backArrow ? <MdArrowBack onClick={() => Router.back()} /> : <div />}
+        <Box>
+          {backArrow ? <MdArrowBack onClick={() => Router.back()} /> : null}
+        </Box>
         <ColorModeExample />
       </Flex>
       <Box height="44px" />

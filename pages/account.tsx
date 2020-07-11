@@ -21,7 +21,7 @@ const AccountPage: React.FC = () => {
   const { user, signout } = React.useContext(AuthContext);
 
   return (
-    <PageWrapper title="My Account" header={false} bottomNavBar>
+    <PageWrapper title="My Account" header bottomNavBar>
       <PrivateRoute fallback={<FullPageLoader message="Authenticating..." />}>
         <Stack spacing={4}>
           <Heading as="h1" fontSize="2xl">
