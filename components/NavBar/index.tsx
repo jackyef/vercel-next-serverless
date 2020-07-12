@@ -5,6 +5,7 @@ import { MdAccountCircle, MdSearch } from 'react-icons/md';
 import { AiFillHeart, AiOutlineLogin } from 'react-icons/ai';
 import { canUseDOM } from '../../utils/constants';
 import { AuthContext } from '../../context/Auth';
+import { maxDesktopWidth, maxMobileWidth } from '../../utils/constants/dimension';
 
 export const NavBar: React.FC = () => {
   const theme = useTheme();
@@ -17,7 +18,7 @@ export const NavBar: React.FC = () => {
       <Flex
         position="fixed"
         width="100%"
-        maxWidth={[480, 960]}
+        maxWidth={[maxMobileWidth, maxDesktopWidth]}
         flex={1}
         bottom={0}
         alignItems="center"

@@ -4,6 +4,7 @@ import { Flex, Box, useTheme, useColorMode, Heading } from '@chakra-ui/core';
 import { MdArrowBack } from 'react-icons/md';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { Button } from '../Button';
+import { maxMobileWidth, maxDesktopWidth } from '../../utils/constants/dimension';
 
 // this is just to quick testing on development
 function ColorModeExample() {
@@ -33,7 +34,7 @@ export const Header: React.FC<Props> = ({ backArrow = false }) => {
         paddingTop={theme.space[1]}
         paddingX={theme.space[4]}
         width="100%"
-        maxWidth={[480, 960]}
+        maxWidth={[maxMobileWidth, maxDesktopWidth]}
         fontSize="2xl"
         flex={1}
         top={0}
