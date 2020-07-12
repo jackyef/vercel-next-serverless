@@ -51,10 +51,14 @@ export const UniversityListItem: React.FC<Props> = ({
               {name}
             </Heading>
             {isAuthenticated && onRemove ? (
-              <MdClose size={24} cursor="pointer" onClick={onRemove} />
+              <Flex as="button" onClick={onRemove}>
+                <MdClose size={24} />
+              </Flex>
             ) : null}
             {isAuthenticated && onAdd ? (
-              <MdAdd size={24} cursor="pointer" onClick={onAdd} />
+              <Flex as="button" onClick={onAdd}>
+                <MdAdd size={24} />
+              </Flex>
             ) : null}
           </Flex>
           <Stack spacing={2}>

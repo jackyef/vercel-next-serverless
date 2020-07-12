@@ -30,6 +30,7 @@ export const SideNavBar: React.FC = () => {
             padding="0.5rem 1rem"
             flexDirection="row"
             alignItems="center"
+            as="button"
             onClick={() => Router.push('/')}
             backgroundColor={
               currentPath === '/' ? theme.colors[usedAlpha][100] : 'inherit'
@@ -44,6 +45,7 @@ export const SideNavBar: React.FC = () => {
               flex={1}
               flexDirection="row"
               alignItems="center"
+              as="button"
               onClick={() => Router.push('/favorites')}
               backgroundColor={
                 currentPath === '/favorites'
@@ -62,6 +64,7 @@ export const SideNavBar: React.FC = () => {
               flex={1}
               flexDirection="row"
               alignItems="center"
+              as="button"
               onClick={() => Router.push('/account')}
               backgroundColor={
                 currentPath === '/account'
@@ -78,6 +81,7 @@ export const SideNavBar: React.FC = () => {
               flex={1}
               flexDirection="row"
               alignItems="center"
+              as="button"
               onClick={() => signin('google', { callbackUrl: currentPath })}
               backgroundColor="inherit"
             >

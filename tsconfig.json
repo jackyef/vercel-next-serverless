@@ -1,9 +1,11 @@
 {
   "compilerOptions": {
-    "typeRoots": ["node_modules/@types"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "lib": [
       "dom",
       "es2017"
@@ -22,7 +24,7 @@
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "resolveJsonModule": true,
-    "isolatedModules": false
+    "isolatedModules": true
   },
   "exclude": [
     "node_modules"

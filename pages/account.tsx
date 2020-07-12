@@ -67,6 +67,7 @@ const AccountPage: React.FC = () => {
               justifyContent="space-between"
               marginY={'1rem'}
               onClick={subscribed ? undefined : askToSubscribe}
+              as="button"
             >
               <Text>{subscribed ? 'You are already subscribed to our newsletter' : 'Subscribe to our newsletter'}</Text>
             </Flex>
@@ -78,6 +79,7 @@ const AccountPage: React.FC = () => {
               marginY={'1rem'}
               color="var(--button-bg-error)"
               onClick={signout}
+              as="button"
             >
               <RiLogoutBoxLine />
               <Text marginLeft={theme.space[2]}>Sign out</Text>
