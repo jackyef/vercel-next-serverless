@@ -1,5 +1,6 @@
 import React from 'react';
 import App from 'next/app';
+import Head from 'next/head';
 import {
   ThemeProvider,
   CSSReset,
@@ -10,6 +11,7 @@ import { Global } from '@emotion/core';
 import mainStyles from '../styles/main';
 import { AuthProvider } from '../context/Auth';
 import { NewsletterSubscriptionProvider } from '../context/NewsletterSubscription';
+import { MetaTags } from '../components/Seo/MetaTags';
 
 class MyApp extends App {
   render() {
@@ -18,6 +20,9 @@ class MyApp extends App {
     return (
       <ThemeProvider theme={theme}>
         <ColorModeProvider>
+          <Head>
+            <MetaTags />
+          </Head>
           <CSSReset />
           <Global styles={mainStyles} />
           <AuthProvider>
