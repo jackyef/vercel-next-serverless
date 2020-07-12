@@ -5,6 +5,10 @@
   "main": "index.js",
   "author": "Jacky Efendi <jacky.efendi1@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=10",
+    "yarn": ">=1.16.0"
+  },
   "scripts": {
     "dev": "next",
     "build": "next build",

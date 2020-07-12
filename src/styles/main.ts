@@ -14,6 +14,10 @@ export default css`
     transition: fill 0.3s linear;
   }
 
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
   body.light-mode {
     --bg: #fff;
     --bg-elevated: #fff;

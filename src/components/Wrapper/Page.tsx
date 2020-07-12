@@ -43,8 +43,8 @@ export const PageWrapper: React.FC<WrapperProps> = ({
             flexDirection="column"
             flex="1"
             padding="2.5rem 1rem"
-            height="92vh"
-            maxH="92vh"
+            height={['83.5vh', '83.5vh', '92vh']}
+            maxHeight={['83.5vh', '83.5vh', '92vh']}
             overflowY="scroll"
           >
             {children}
