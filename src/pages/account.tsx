@@ -78,7 +78,7 @@ const AccountPage: React.FC = () => {
               alignItems="center"
               marginY={'1rem'}
               color="var(--button-bg-error)"
-              onClick={signout}
+              onClick={() => signout({ callbackUrl: '/' })}
               as="button"
             >
               <RiLogoutBoxLine />

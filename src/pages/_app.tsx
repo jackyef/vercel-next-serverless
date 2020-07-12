@@ -20,9 +20,7 @@ class MyApp extends App {
     return (
       <ThemeProvider theme={theme}>
         <ColorModeProvider>
-          <Head>
-            <MetaTags />
-          </Head>
+          <MetaTags />
           <CSSReset />
           <Global styles={mainStyles} />
           <AuthProvider>

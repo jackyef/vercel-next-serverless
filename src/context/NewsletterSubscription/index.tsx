@@ -4,12 +4,6 @@ import { AuthContext } from '../Auth';
 import {
   useToast,
   useDisclosure,
-  Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerHeader,
-  DrawerBody,
-  Flex,
   Stack,
   Modal,
   ModalOverlay,
